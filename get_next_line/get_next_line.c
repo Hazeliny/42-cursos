@@ -78,12 +78,11 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	bytes_read = 1;
-	while (storage == NULL || (!ft_strchr(storage, '\n') && bytes_read > 0))
+	while (!ft_strchr(storage, '\n') && bytes_read > 0)
 		bytes_read = ft_read_file(fd, &storage);
 	if (bytes_read < 0)
 		return (NULL);
-//	if (bytes_read == 0 && (!storage || *storage == '\0'))
-	if (bytes_read == 0)
+	if (bytes_read == 0 && (!storage || *storage == '\0'))
 	{
 		ft_free(&storage);	
 		return (NULL);

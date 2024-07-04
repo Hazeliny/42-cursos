@@ -24,6 +24,8 @@ size_t	ft_strlen(char *str)
 
 char	*ft_strchr(char *str, char c)
 {
+	if (!str)
+		return (NULL);
 	while (*str != '\0' && *str != c)
 		str++;
 	if (*str == c)

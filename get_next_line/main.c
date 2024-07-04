@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 		printf("%s", line);
 		free(line);
 	}
-printf("%s\n", "test end");
 	close(fd);
 	return (0);
 }
