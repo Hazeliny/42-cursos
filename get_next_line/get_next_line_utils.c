@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 16:46:30 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/01 15:26:11 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/04 16:40:18 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	*ft_strdup(char *s)
 	char	*d;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	d = (char *)malloc(ft_strlen(s) + 1);
 	if (!d)
 		return (NULL);
@@ -80,6 +82,8 @@ char	*ft_strndup(char *s, size_t n)
 	size_t	i;
 	size_t	len;
 
+	if (s == NULL)
+		return (NULL);
 	if (n < ft_strlen(s))
 		len = n;
 	else
@@ -90,6 +94,6 @@ char	*ft_strndup(char *s, size_t n)
 	i = -1;
 	while (++i < len)
 		d[i] = s[i];
-	d[i] = '\0';
+	d[len] = '\0';
 	return (d);
 }

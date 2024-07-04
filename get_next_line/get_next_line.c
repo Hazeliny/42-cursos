@@ -6,19 +6,23 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:09:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/01 16:20:19 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/04 17:39:50 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-static void	ft_free(char **storage)
+void	ft_free(char **storage)
 {
-	free(*storage);
-	*storage = NULL;
+	if (storage && *storage)
+	{
+		free(*storage);
+		*storage = NULL;
+	}
 }
 
-static char	*ft_extract_line(char **storage)
+char	*ft_extract_line(char **storage)
 {
 	size_t	i;
 	char	*line;
@@ -31,7 +35,7 @@ static char	*ft_extract_line(char **storage)
 	{
 		line = ft_strndup(*storage, i + 1);
 		temp = ft_strdup(*storage + i + 1);
-		free(*storage);
+		ft_free(storage);
 		*storage = temp;
 		if (**storage == '\0')
 			ft_free(storage);
@@ -44,7 +48,7 @@ static char	*ft_extract_line(char **storage)
 	return (line);
 }
 
-static int	ft_read_file(int fd, char **storage)
+int	ft_read_file(int fd, char **storage)
 {
 	char	buffer[BUFFER_SIZE + 1];
 	char	*temp;
@@ -57,7 +61,7 @@ static int	ft_read_file(int fd, char **storage)
 	if (*storage)
 	{
 		temp = ft_strjoin(*storage, buffer);
-		free(*storage);
+		ft_free(storage);
 		*storage = temp;
 	}
 	else
@@ -71,16 +75,19 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		bytes_read;
 
-	storage = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	bytes_read = 1;
-	while (storage == NULL || !ft_strchr(storage, '\n') && bytes_read > 0)
+	while (storage == NULL || (!ft_strchr(storage, '\n') && bytes_read > 0))
 		bytes_read = ft_read_file(fd, &storage);
 	if (bytes_read < 0)
 		return (NULL);
-	if (bytes_read == 0 && (!storage || *storage == '\0'))
+//	if (bytes_read == 0 && (!storage || *storage == '\0'))
+	if (bytes_read == 0)
+	{
+		ft_free(&storage);	
 		return (NULL);
+	}
 	line = ft_extract_line(&storage);
 	return (line);
 }
