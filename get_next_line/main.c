@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 14:40:36 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/04 16:27:03 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/05 14:27:46 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		perror("Error opening file");
 		return (1);
 	}
-	while ((line = get_next_line(fd)) != NULL)
+	while ((line = get_next_line(-1)) != NULL)
 	{
 		printf("%s", line);
 		free(line);

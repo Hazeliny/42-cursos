@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:09:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/05 12:44:57 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/05 14:23:37 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	bytes_read = 1;
 	while (!ft_strchr(storage, '\n') && bytes_read > 0)
+	{
 		bytes_read = ft_read_file(fd, &storage);
-	if (bytes_read < 0)
-		return (NULL);
+		if (bytes_read < 0)
+		{
+			ft_free(&storage);
+			return (NULL);
+		}
+	}
 	if (bytes_read == 0 && (!storage || *storage == '\0'))
 	{
 		ft_free(&storage);
