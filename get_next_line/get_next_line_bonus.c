@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
+/*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 13:09:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/05 14:23:37 by linyao           ###   ########.fr       */
+/*   Created: 2024/07/06 17:28:47 by linyao            #+#    #+#             */
+/*   Updated: 2024/07/06 17:28:48 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_free(char **storage)
 {
@@ -75,24 +75,66 @@ int	ft_read_file(int fd, char **storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage;
+	static char	*storage[4096];
 	char		*line;
 	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
-		ft_free(&storage);
+		if (fd >= 0 && fd < 4096)
+			ft_free(&storage[fd]);
 		return (NULL);
 	}
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(storage, '\n'))
-		bytes_read = ft_read_file(fd, &storage);
-	if ((bytes_read == 0 && (!storage || *storage == '\0'))
+	while (bytes_read > 0 && !ft_strchr(storage[fd], '\n'))
+		bytes_read = ft_read_file(fd, &storage[fd]);
+	if ((bytes_read == 0 && (!storage[fd] || *storage[fd] == '\0'))
 		|| (bytes_read < 0))
 	{
-		ft_free(&storage);
+		ft_free(&storage[fd]);
 		return (NULL);
 	}
-	line = ft_extract_line(&storage);
+	line = ft_extract_line(&storage[fd]);
 	return (line);
 }
+/*
+#include <stdio.h>
+#include <fcntl.h>
+
+int	main(void)
+{
+	char	*line;
+	int	i;
+	int	fd1;
+	int	fd2;
+	int	fd3;
+
+	fd1 = open("main.c", O_RDONLY);
+	fd2 = open("test1.txt", O_RDONLY);
+	fd3 = open("test3.txt", O_RDONLY);
+	i = 1;
+	while (i < 43)
+	{
+		line = get_next_line(fd1);
+		printf("line%02d of main.c: %s", i, line);
+		if (line == NULL)
+                        printf("\n");
+		free(line);
+		line = get_next_line(fd2);
+                printf("line%02d of test1.txt: %s", i, line);
+		if (line == NULL)
+			printf("\n");
+                free(line);
+		line = get_next_line(fd3);
+                printf("line%02d of test3.txt: %s", i, line);
+		if (line == NULL)
+                        printf("\n");
+                free(line);
+		i++;
+	}
+	close(fd1);
+	close(fd2);
+	close(fd3);
+	return (0);
+}
+*/
