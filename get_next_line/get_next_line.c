@@ -6,11 +6,12 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:09:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/05 14:23:37 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/08 18:40:32 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 void	ft_free(char **storage)
 {
@@ -79,7 +80,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		ft_free(&storage);
 		return (NULL);

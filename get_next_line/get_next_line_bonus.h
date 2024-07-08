@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:23:11 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/06 17:23:12 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/08 19:05:04 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 int		ft_read_file(int fd, char **storage);

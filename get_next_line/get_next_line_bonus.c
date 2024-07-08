@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:28:47 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/06 17:28:48 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/08 19:09:03 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ int	ft_read_file(int fd, char **storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage[4096];
+	static char	*storage[FOPEN_MAX];
 	char		*line;
 	ssize_t		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
 	{
-		if (fd >= 0 && fd < 4096)
+		if (fd >= 0 && fd < FOPEN_MAX)
 			ft_free(&storage[fd]);
 		return (NULL);
 	}
