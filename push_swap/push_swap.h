@@ -13,11 +13,32 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "libft/libft.h"
 # include <stdbool.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <stddef.h>
 
+typedef struct	s_stack_node
+{
+	long			value;
+	int			index;
+	int			push_cost;
+	bool			above_midline;
+	bool			cheapest;
+	struct s_stack_node	*target_node;
+	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
+}	t_stack_node;
+
 char	**swap_split(char *str, char c);
+void    ft_free_array(char **arr);
+void    ft_error_msg(void);
+void    init_stack(t_stack_node **a, char **arr);
+int     error_nonint(char *s);
+int	error_duplicate(t_stack_node *a, long l);
+void    handle_errors(t_stack_node **sk);
+void    ft_free_stack(t_stack_node **sk);
+t_stack_node    *find_last_node(t_stack_node *sk);
 
 #endif

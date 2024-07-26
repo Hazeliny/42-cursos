@@ -12,50 +12,76 @@
 
 #include "push_swap.h"
 #include <stdio.h>
-/*
-void	ft_error(void)
+
+void	ft_error_msg(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
 }
-*/
+
+void	ft_free_array(char **arr)
+{
+	size_t	i;
+
+	i = 0;
+	if (!arr)
+		return ;
+	while (arr[i] != NULL)
+		free(arr[i++]);
+	free(arr);
+}
+char	**create_arr(int arc, char **arv)
+{
+	int	i;
+	int	j;
+	char	**new_arr;
+
+	new_arr = malloc(arc * sizeof(char *));
+	if (!new_arr)
+		return (NULL);
+	i = 1;
+	j = 0;
+	while (i < arc)
+	{
+		new_arr[j] = ft_strdup(arv[i]);
+		if (!new_arr[j])
+		{
+			ft_free_array(new_arr);
+			return (NULL);
+		}
+		i++;
+		j++;
+	}
+	new_arr[j] = NULL;
+	return (new_arr);
+}
+
 int	main(int argc, char **argv)
 {
-//	int		num;
-	int		i;
+	t_stack_node	*a;
+//	t_stack_node	*b;	
+//	int		i;
 	int		j;
 	char	**splitted_args;
 //	int		splitted_argc;
 
-	i = 1;
+//	i = 1;
+	a = NULL;
+//	b = NULL;
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
 		splitted_args = swap_split(argv[1], ' ');
 	else
-	{
-		splitted_args = malloc(argc * sizeof(char *));
-		if (!splitted_args)
-			return(1);
-		j = 0;
-		while (i < argc)
-			splitted_args[j++] = argv[i++];
-		splitted_args[j] = NULL; 
-	}
-	for (j = 0; splitted_args[j] != NULL; j++)
-		printf("%s\n", splitted_args[j]);
-	for (i = 0; splitted_args[i] != NULL; i++)
-		free(splitted_args[i]);
-	free(splitted_args);
+		splitted_args = create_arr(argc, argv);
+	if (!splitted_args)
+		return(1);
+	for (j = 0; splitted_args[j] != NULL; j++) //test
+		printf("%s\n", splitted_args[j]); //test
+	init_stack(&a, splitted_args);
+	for (t_stack_node *cu = a; cu; cu = cu->next) //test
+		printf("stacks: %ld\n", cu->value); //test
+	ft_free_array(splitted_args);
+	ft_free_stack(&a);
 	return (0);
 }
-/*
-			num = check_argvs(splitted_argc, splitted_args);
-			if (num == -1)
-			{
-				free(splitted_args);
-				ft_error();
-			}
-	}
-}
-*/

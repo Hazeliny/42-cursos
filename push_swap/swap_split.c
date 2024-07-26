@@ -22,7 +22,7 @@ size_t	count_substr(char *s, char c)
 	{
 		s_flag = false;
 		while (*s == c && *s)
-			++s;
+			s++;
 		while (*s != c && *s)
 		{
 			if (!s_flag)
@@ -47,7 +47,7 @@ char	*extract_substr(char *s, char c)
 		index++;
 	while ((s[index + i] != c) && s[index + i])
 		i++;
-	substr = malloc(i * sizeof(char) + 1);
+	substr = malloc((i + 1) * sizeof(char));
 	if (!substr)
 		return(NULL);
 	i = 0;
@@ -67,11 +67,12 @@ char	**swap_split(char *str, char c)
 	substr_num = count_substr(str, c);
 	if (!substr_num)
 		exit(1);
-	splitted = malloc((substr_num + 2) * sizeof(char *));
+	splitted = malloc((substr_num + 1) * sizeof(char *));
 	if (!splitted)
 		return(NULL);
-	while (substr_num-- >= 0)
+	while (i < substr_num)
 	{
+/*
 		if (i == 0)
 		{
 			splitted[i] = malloc(sizeof(char));
@@ -80,7 +81,14 @@ char	**swap_split(char *str, char c)
 			splitted[i++][0] = '\0';
 			continue ;
 		}
-		splitted[i++] = extract_substr(str, c);
+*/
+		splitted[i] = extract_substr(str, c);
+		if (!splitted[i])
+		{
+			ft_free_array(splitted);
+			return (NULL);
+		}
+		i++;
 	}
 	splitted[i] = NULL;
 	return(splitted);
