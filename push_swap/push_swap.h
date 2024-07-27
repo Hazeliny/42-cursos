@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdio.h> //test
 
 typedef struct	s_stack_node
 {
@@ -40,5 +41,15 @@ int	error_duplicate(t_stack_node *a, long l);
 void    handle_errors(t_stack_node **sk);
 void    ft_free_stack(t_stack_node **sk);
 t_stack_node    *find_last_node(t_stack_node *sk);
+t_stack_node    *search_max(t_stack_node *node);
+int     stack_len(t_stack_node *sk);
+bool    stack_ordered(t_stack_node *sk);
+void    simple_sort(t_stack_node **a);
+
+
+void    sa(t_stack_node **a, bool tag);
+void    ra(t_stack_node **a, bool tag);
+void    rra(t_stack_node **a, bool tag);
+
 
 #endif

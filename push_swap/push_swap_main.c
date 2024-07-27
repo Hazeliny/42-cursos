@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	ft_error_msg(void)
 {
@@ -30,6 +29,7 @@ void	ft_free_array(char **arr)
 		free(arr[i++]);
 	free(arr);
 }
+
 char	**create_arr(int arc, char **arv)
 {
 	int	i;
@@ -56,32 +56,44 @@ char	**create_arr(int arc, char **arv)
 	return (new_arr);
 }
 
+static char	**format_arr(int ac, char **av)
+{
+	char	**arr;
+
+	if (ac < 2 || (ac == 2 && !av[1][0]))
+		return (NULL);
+	else if (ac == 2)
+		arr = swap_split(av[1], ' ');
+	else
+		arr = create_arr(ac, av);
+	return (arr);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-//	t_stack_node	*b;	
-//	int		i;
-	int		j;
+	t_stack_node	*b;	
 	char	**splitted_args;
-//	int		splitted_argc;
 
-//	i = 1;
 	a = NULL;
-//	b = NULL;
-	if (argc < 2 || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		splitted_args = swap_split(argv[1], ' ');
-	else
-		splitted_args = create_arr(argc, argv);
+	b = NULL;
+	splitted_args = format_arr(argc, argv);
 	if (!splitted_args)
 		return(1);
-	for (j = 0; splitted_args[j] != NULL; j++) //test
-		printf("%s\n", splitted_args[j]); //test
 	init_stack(&a, splitted_args);
-	for (t_stack_node *cu = a; cu; cu = cu->next) //test
-		printf("stacks: %ld\n", cu->value); //test
+//	ra(&a, false); //test
+//	for (t_stack_node *u = a; u; u = u->next) //test
+//		printf("stacks reversed: %ld\n", u->value); //test
 	ft_free_array(splitted_args);
+	if (!stack_ordered(a))
+	{
+		if (stack_len(a) == 2)
+			sa(&a, false);
+		else if (stack_len(a) == 3)
+			simple_sort(&a);
+		else
+			complex_sort(&a, &b);
+	}
 	ft_free_stack(&a);
 	return (0);
 }
