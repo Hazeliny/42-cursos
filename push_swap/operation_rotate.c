@@ -32,3 +32,18 @@ void	ra(t_stack_node **a, bool tag)
 	if (!tag)
 		write(1, "ra\n", 3);
 }
+
+void    rb(t_stack_node **b, bool tag)
+{
+	ft_sk_rotate(b);
+	if (!tag)
+		write(1, "rb\n", 3);
+}
+
+void	rr(t_stack_node **a, t_stack_node **b, bool tag)
+{
+	ft_sk_rotate(a);
+	ft_sk_rotate(b);
+	if (!tag)
+		write(1, "rr\n", 3);
+}

@@ -33,7 +33,15 @@ void	sa(t_stack_node **a, bool tag)
 
 void	sb(t_stack_node **b, bool tag)
 {
-	ft_sk_wap(b);
+	ft_sk_swap(b);
 	if (!tag)
 		write(1, "sb\n", 3);
+}
+
+void    ss(t_stack_node **a, t_stack_node **b, bool tag)
+{
+	ft_sk_swap(a);
+	ft_sk_swap(b);
+	if (!tag)
+		write(1, "ss\n", 3);
 }
