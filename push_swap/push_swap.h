@@ -42,14 +42,17 @@ void    handle_errors(t_stack_node **sk);
 void    ft_free_stack(t_stack_node **sk);
 t_stack_node    *find_last_node(t_stack_node *sk);
 t_stack_node    *search_max(t_stack_node *node);
+t_stack_node    *search_min(t_stack_node *node);
 int     stack_len(t_stack_node *sk);
 bool    stack_ordered(t_stack_node *sk);
 void    simple_sort(t_stack_node **a);
 void    complex_sort(t_stack_node **a, t_stack_node **b);
 void    config_node_a(t_stack_node *a, t_stack_node *b);
+void    config_node_b(t_stack_node *a, t_stack_node *b);
 void    get_index(t_stack_node *node);
 void    get_cheapest(t_stack_node *node);
 void    push_a_b(t_stack_node **a, t_stack_node **b);
+void    push_b_a(t_stack_node **a, t_stack_node **b);
 t_stack_node    *get_cheapest(t_stack_node *node);
 void    prep_push(t_stack_node **sk, t_stack_node *top, char sk_name);
 

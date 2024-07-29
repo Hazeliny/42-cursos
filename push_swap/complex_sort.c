@@ -47,6 +47,17 @@ void	prep_push(t_stack_node **sk, t_stack_node *top, char sk_name)
 	}
 }
 
+static void	min_to_top(t_stack_node **sk)
+{
+	while ((*sk)->value != search_min(*sk)->value)
+	{
+		if (search_min(*sk)->above_mid)
+			ra(sk, false);
+		else
+			rra(sk, false);
+	}
+}
+
 void	complex_sort(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;

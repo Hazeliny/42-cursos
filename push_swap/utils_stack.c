@@ -53,6 +53,7 @@ t_stack_node	*search_max(t_stack_node *node)
 {
 	long		max;
 	t_stack_node	*node_max;
+
 	if (!node)
 		return (NULL);
 	max = LONG_MIN;
@@ -66,4 +67,24 @@ t_stack_node	*search_max(t_stack_node *node)
 		node = node->next;
 	}
 	return (node_max);
+}
+
+t_stack_node    *search_min(t_stack_node *node)
+{
+	long		min;
+	t_stack_node	*node_min;
+
+	if (!node)
+		return (NULL);
+	min = LONG_MAX;
+	while (node)
+	{
+		if (node->value < min)
+		{
+			min = node->value;
+			node_min = node;
+		}
+		node = node->next;
+	}
+	return (node_min);
 }

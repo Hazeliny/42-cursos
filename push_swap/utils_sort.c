@@ -46,3 +46,8 @@ void	push_a_b(t_stack_node **a, t_stack_node **b)
 	prep_push(b, cheapest_node->target_node, 'b');
 	pb(b, a, false);
 }
+void	push_b_a(t_stack_node **a, t_stack_node **b)
+{
+	prep_push(a, (*b)->target_node, 'a');
+	pa(a, b, false);
+}
