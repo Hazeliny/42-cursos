@@ -6,7 +6,7 @@
 #    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 17:48:46 by linyao            #+#    #+#              #
-#    Updated: 2024/06/16 15:46:52 by linyao           ###   ########.fr        #
+#    Updated: 2024/07/30 16:58:37 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ $(HBONUS): $(OBJ) $(BONUS_OBJ)
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-%.o: %.c Makefile
+%.o: %.c $(INCLUDE) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
