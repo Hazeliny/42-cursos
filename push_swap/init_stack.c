@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 13:58:42 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/26 13:58:50 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:33:50 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long	ft_atol(char *s)
 {
 	long	result;
-	int	mark;
+	int		mark;
 
 	result = 0;
 	mark = 1;
@@ -62,7 +62,7 @@ int	add_node(t_stack_node **sk, long l)
 void	init_stack(t_stack_node **a, char **arr)
 {
 	long	l;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (arr[i])

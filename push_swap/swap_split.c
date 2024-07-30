@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:30:56 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/25 17:06:23 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:57:26 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	count_substr(char *s, char c)
 			s++;
 		}
 	}
-	return(count);
+	return (count);
 }
 
 char	*extract_substr(char *s, char c)
@@ -49,12 +49,12 @@ char	*extract_substr(char *s, char c)
 		i++;
 	substr = malloc((i + 1) * sizeof(char));
 	if (!substr)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while ((s[index] != c) && s[index])
 		substr[i++] = s[index++];
 	substr[i] = '\0';
-	return(substr);
+	return (substr);
 }
 
 char	**swap_split(char *str, char c)
@@ -69,19 +69,9 @@ char	**swap_split(char *str, char c)
 		exit(1);
 	splitted = malloc((substr_num + 1) * sizeof(char *));
 	if (!splitted)
-		return(NULL);
+		return (NULL);
 	while (i < substr_num)
 	{
-/*
-		if (i == 0)
-		{
-			splitted[i] = malloc(sizeof(char));
-			if (splitted[i] == NULL)
-				return(NULL);
-			splitted[i++][0] = '\0';
-			continue ;
-		}
-*/
 		splitted[i] = extract_substr(str, c);
 		if (!splitted[i])
 		{
@@ -91,5 +81,5 @@ char	**swap_split(char *str, char c)
 		i++;
 	}
 	splitted[i] = NULL;
-	return(splitted);
+	return (splitted);
 }

@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:57:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/29 19:57:38 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:10:01 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	get_target_b(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node	*current_b;
+	t_stack_node	*current_a;
 	t_stack_node	*target;
-	long		match_index;
+	long			match_index;
 
 	while (b)
 	{

@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:42:59 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/28 11:43:03 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:30:01 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_stack_node	*get_cheapest(t_stack_node *node)
 {
 	if (!node)
 		return (NULL);
-
 	while (node)
 	{
 		if (node->cheapest)
@@ -66,7 +65,7 @@ void	complex_sort(t_stack_node **a, t_stack_node **b)
 	if (len_a-- > 3 && !stack_ordered(*a))
 		pb(b, a, false);
 	if (len_a-- > 3 && !stack_ordered(*a))
-		pb(b, a,false);
+		pb(b, a, false);
 	while (len_a-- > 3 && !stack_ordered(*a))
 	{
 		config_node_a(*a, *b);

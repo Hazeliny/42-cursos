@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_main.c                                   :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:39:52 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/25 17:38:01 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:08:34 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_free_array(char **arr)
 
 char	**create_arr(int arc, char **arv)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**new_arr;
 
 	new_arr = malloc(arc * sizeof(char *));
@@ -73,17 +73,14 @@ int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;	
-	char	**splitted_args;
+	char			**splitted_args;
 
 	a = NULL;
 	b = NULL;
 	splitted_args = format_arr(argc, argv);
 	if (!splitted_args)
-		return(1);
+		return (1);
 	init_stack(&a, splitted_args);
-//	ra(&a, false); //test
-//	for (t_stack_node *u = a; u; u = u->next) //test
-//		printf("stacks reversed: %ld\n", u->value); //test
 	ft_free_array(splitted_args);
 	if (!stack_ordered(a))
 	{
@@ -97,3 +94,6 @@ int	main(int argc, char **argv)
 	ft_free_stack(&a);
 	return (0);
 }
+//  ra(&a, false); //test
+//  for (t_stack_node *u = a; u; u = u->next) //test
+//      printf("stacks reversed: %ld\n", u->value); //test

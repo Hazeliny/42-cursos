@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 14:36:51 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/27 14:36:55 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:38:06 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	rra(t_stack_node **a, bool tag)
 		write(1, "rra\n", 4);
 }
 
-void    rrb(t_stack_node **b, bool tag)
+void	rrb(t_stack_node **b, bool tag)
 {
 	ft_sk_rev_rotate(b);
 	if (!tag)
-		 write(1, "rrb\n", 4);
+		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack_node **a, t_stack_node **b, bool tag)

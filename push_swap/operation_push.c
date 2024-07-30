@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:35:23 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/28 12:35:27 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 11:36:18 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_sk_push(t_stack_node **dst, t_stack_node **org)
 	if (*org)
 		(*org)->prev = NULL;
 	to_push->prev = NULL;
-	if(!(*dst))
+	if (!(*dst))
 	{
 		*dst = to_push;
 		to_push->next = NULL;
@@ -45,8 +45,7 @@ void	pa(t_stack_node **a, t_stack_node **b, bool tag)
 
 void	pb(t_stack_node **b, t_stack_node **a, bool tag)
 {
-	ft_sk_push(b,a);
+	ft_sk_push(b, a);
 	if (!tag)
 		write(1, "pb\n", 3);
 }
-

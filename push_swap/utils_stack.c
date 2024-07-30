@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:31:37 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/26 16:31:38 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 12:01:51 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	stack_ordered(t_stack_node *sk)
 
 t_stack_node	*search_max(t_stack_node *node)
 {
-	long		max;
+	long			max;
 	t_stack_node	*node_max;
 
 	if (!node)
@@ -69,9 +69,9 @@ t_stack_node	*search_max(t_stack_node *node)
 	return (node_max);
 }
 
-t_stack_node    *search_min(t_stack_node *node)
+t_stack_node	*search_min(t_stack_node *node)
 {
-	long		min;
+	long			min;
 	t_stack_node	*node_min;
 
 	if (!node)

@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 14:39:42 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/28 14:39:45 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/30 13:07:10 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_index(t_stack_node *node)
 	int	mid;
 
 	i = 0;
-	if (!stack)
+	if (!node)
 		return ;
 	mid = stack_len(node) / 2;
 	while (node)
@@ -37,7 +37,7 @@ static void	get_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target;
-	long		match_index;
+	long			match_index;
 
 	while (a)
 	{
@@ -81,9 +81,9 @@ static void	get_cost_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	get_cheapest(t_stack_node *node)
+void	config_cheapest(t_stack_node *node)
 {
-	long		cheapest_price;
+	long			cheapest_price;
 	t_stack_node	*cheapest_node;
 
 	if (!node)
@@ -107,5 +107,5 @@ void	config_node_a(t_stack_node *a, t_stack_node *b)
 	get_index(b);
 	get_target_a(a, b);
 	get_cost_a(a, b);
-	get_cheapest(a);
+	config_cheapest(a);
 }
