@@ -6,7 +6,7 @@
 #    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 12:04:36 by linyao            #+#    #+#              #
-#    Updated: 2024/07/30 12:54:04 by linyao           ###   ########.fr        #
+#    Updated: 2024/07/30 13:22:56 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ OBJ = $(SRC:.c=.o)
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
+INCLUDE = libft/libft.h push_swap.h
+
 all: $(NAME)
 
 $(NAME):$(LIBFT) $(OBJ)
@@ -31,7 +33,7 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
 
 clean:
-	@$(MAKE) - C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean
 	@rm -f $(OBJ)
 
 fclean: clean
