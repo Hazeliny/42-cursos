@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 19:57:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/30 13:10:01 by linyao           ###   ########.fr       */
+/*   Updated: 2024/07/31 11:28:22 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	get_target_b(t_stack_node *a, t_stack_node *b)
 			current_a = current_a->next;
 		}
 		if (match_index == LONG_MAX)
-			b->target_node = search_max(a);
+			b->target_node = search_min(a);
 		else
 			b->target_node = target;
 		b = b->next;
