@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 11:39:52 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/02 13:03:48 by linyao           ###   ########.fr       */
+/*   Created: 2024/08/02 15:41:12 by linyao            #+#    #+#             */
+/*   Updated: 2024/08/02 16:22:47 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	ft_error_msg(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
-
-void	ft_free_array(char **arr)
-{
-	size_t	i;
-
-	i = 0;
-	if (!arr)
-		return ;
-	while (arr[i] != NULL)
-		free(arr[i++]);
-	free(arr);
-}
+#include "../push_swap.h"
+#include "checker.h"
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdib.h>
 
 char	**create_arr(int arc, char **arv)
 {
@@ -74,6 +60,8 @@ int	main(int argc, char **argv)
 	t_stack_node	*a;
 	t_stack_node	*b;	
 	char			**splitted_args;
+	int				len;
+	char			*str;
 
 	a = NULL;
 	b = NULL;
@@ -82,19 +70,17 @@ int	main(int argc, char **argv)
 		return (1);
 	init_stack(&a, splitted_args);
 	ft_free_array(splitted_args);
-	if (!stack_ordered(a))
+	len = stack_len(a);
+	str = get_next_line(STDIN_FILENO);
+	while (str)
 	{
-		if (stack_len(a) == 2)
-			sa(&a, false);
-		else if (stack_len(a) == 3)
-			simple_sort(&a);
-		else
-			complex_sort(&a, &b);
+		handle_operations(&a, &b, str);
+		str = get_next_line(STDIN_FILENO);
 	}
-	ft_free_stack(&a);
-	ft_free_stack(&b);
+	if (stack_ordered(a) && len == stack_len(a))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	free(a);
 	return (0);
 }
-//  ra(&a, false); //test
-//  for (t_stack_node *u = a; u; u = u->next) //test
-//      printf("stacks reversed: %ld\n", u->value); //test

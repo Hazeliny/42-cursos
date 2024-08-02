@@ -6,13 +6,13 @@
 #    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/30 12:04:36 by linyao            #+#    #+#              #
-#    Updated: 2024/07/30 16:45:51 by linyao           ###   ########.fr        #
+#    Updated: 2024/08/02 15:17:10 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 SRC = complex_sort.c init_stack.c operation_rev_rotate.c \
 		config_node_a.c operation_rotate.c simple_sort.c \
       	config_node_b.c operation_swap.c swap_split.c \
