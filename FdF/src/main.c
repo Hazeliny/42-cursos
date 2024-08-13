@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 		fd = open(av[1], O_RDONLY);
 		if (fd < 2)
 			terminate(ERR_OPEN);
-		init_map(map, 1);
+		init_map(map);
 		map->memory = read_map(fd);
 		close(fd);
 	}

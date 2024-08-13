@@ -35,7 +35,13 @@
 # define JAFFA		0xEF8633
 
 # define DEFAULT_COLOR	JAFFA
+# define GROUND_COLOR	SAFFRON
 # define BOTTOM_COLOR	AZUL
+# define TOP_COLOR	BRICK_RED
+# define MENU_COLOR     0x202020
+# define BACK_COLOR     0x151515
+# define TEXT_COLOR	0xEAEAEA
+# define NUMBER_COLOR	0xF3AF3D
 
 # define MENU_WIDTH	350
 # define FIT_MARGIN	50
@@ -50,6 +56,14 @@ typedef struct	s_point {
 		float	ordinate[2];
 		bool	paint;
 }		t_point;
+
+typedef struct	s_colors {
+		int	menucolor;
+		int	groundcolor;
+		int	backcolor;
+		int	bottomcolor;
+		int	topcolor;
+}		t_colors;
 
 typedef struct	s_frame {
 		void	*mlx;
@@ -72,7 +86,7 @@ typedef struct	s_map {
 		char		*memory;
 		char		**lines;
 		int			zmin;
-		int			len;
+		int			length;
 		int			renders;
 		double		perform;
 		float		angle[3];
