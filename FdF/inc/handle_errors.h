@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_errors.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 12:51:33 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/13 17:41:23 by linyao           ###   ########.fr       */
+/*   Created: 2024/08/13 16:48:53 by linyao            #+#    #+#             */
+/*   Updated: 2024/08/13 17:11:34 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/minilibx-linux/mlx.h"
-#include "../inc/parameters.h"
-#include "../inc/handle_errors.h"
+#ifndef	HANDLE_ERRORS_H
+# define HANDLE_ERRORS_H
 
+# include <errno.h>
 
+# define ERR_ARGV		"Error: incorrect numbers of input arguments"
+# define ERR_OPEN		"Error: opening file"
+# define ERR_READ		"Error: reading file"
+# define ERR_EMPTY		"Error: empty file / formatted improperly"
+# define ERR_MAP		"Error: map"
 
-int	main(int ac, char **av)
-{
-	int			fd;
-	t_metadata	meta;
-	t_map		*map;
+void	terminate(char *s);
 
-	if (ac == 2)
-	{
-		fd = open(av[1], O_RDONLY);
-		if (fd < 2)
-			terminate(ERR_OPEN);
-		init_map(map, 1);
-		map->memory = read_map(fd);
-		close(fd);
-	}
-	else	
-		terminate(ERR_ARGV);
-	return (0);
-}
+#endif
