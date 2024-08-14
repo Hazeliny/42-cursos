@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:48:53 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/13 17:11:34 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:21:28 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define ERR_READ		"Error: reading file"
 # define ERR_EMPTY		"Error: empty file / formatted improperly"
 # define ERR_MAP		"Error: map"
+# define ERR_MEMO		"Error: memory"
+# define ERR_LINE		"Error: number of elements is not equal to this line"
+
 
 void	terminate(char *s);
 

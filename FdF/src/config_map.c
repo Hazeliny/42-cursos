@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 21:46:20 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/13 21:46:25 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/14 16:47:28 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    init_map_color(t_map *map)
 
 void	init_map(t_map *map)
 {
-	map->length = 0;
+	map->area = 0;
 	map->limits.axis[X] = 0;
 	map->limits.axis[Y] = 0;
 	map->limits.axis[Z] = 0;
@@ -46,4 +46,29 @@ void	init_map(t_map *map)
 	map->angle[Y] = 0;
 	map->angle[Z] = 0;
 	init_map_color(map);
+}
+
+char	*read_map(int fd)
+{
+	static int	byte_read = BUFFER_READ;
+	static int	sum_bytes = 0;
+	char		*buffer;
+	char		*tmp;
+	char		*content;
+
+	buffer = malloc(BUFFER_READ * sizeof(char));
+	if (!buffer)
+		terminate(ERR_MEMO);
+	content = ft_strdup("");
+	while (byte_read == BUFFER_READ)
+	{
+		ft_memset(buffer, 0, BUFFER_READ);
+		byte_read = read(fd, buffer, BUFFER_READ);
+		tmp = content;
+		content = ft_strjoin(content, buffer);
+		sum_bytes += byte_read;
+		free(tmp);
+	}
+	free(buffer);
+	return(content);
 }
