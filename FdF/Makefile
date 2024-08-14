@@ -25,10 +25,12 @@ INC		 		:= inc/
 LIB				:= lib/
 LIBFT_DIR 		:= $(LIB)libft/
 LIBFT			:= $(LIBFT_DIR)libft.a
+#MINILIBX_DIR    := $(LIB)minilibx_macos/
 MINILIBX_DIR	:= $(LIB)minilibx-linux/
 MINILIBX		:= $(MINILIBX_DIR)libmlx.a
 MINILIBXCC		:= -I mlx -L $(MINILIBX_DIR) -lmlx
 HEADER 			:= -I$(INC) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
+#OPENGL			:= -framework OpenGL -framework AppKit
 OPENGL			:= -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 DEF_COLOR = \033[0;39m

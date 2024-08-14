@@ -57,12 +57,17 @@ int	count_points(char *line, t_map *map, int n_line)
 		map->points[index].axis[X] = i - map->limits.axis[X] / 2;
 		map->points[index].axis[Y] = n_line - map->limits.axis[Y] / 2;
 		map->points[index].paint = 1;
-		map->points[index].color = DEFAAULT_COLOR;
+		map->points[index].color = DEFAULT_COLOR;
 		map->points[index].hex_color = has_hexcolors(split[i]);
 		if (map->limits.axis[Z] < map->points[index].axis[Z])
 			map->limits.axis[Z] = map->points[index].axis[Z];
-		if
+		if(map->zmin > map->points[index].axis[Z])
+			map->zmin = map->points[index].axis[Z];
+		i++;
+		index++;
 	}
+	free_array(split);
+	return (i);
 }
 
 void	get_points(t_map *map)
@@ -84,10 +89,10 @@ void	get_points(t_map *map)
 			if (tmp != NULL)
 				free(tmp);
 			tmp = ft_substr(current, 0, &map->memory[i] - current);
-			current = &map->memory[i + 1];
-			n_points += count_points(tmp, map, n_line++);
 			if (map->memory[i] == '\0')
 				break;
+			current = &map->memory[i + 1];
+			n_points += count_points(tmp, map, n_line++);
 		}
 	}
 	if (tmp != NULL)

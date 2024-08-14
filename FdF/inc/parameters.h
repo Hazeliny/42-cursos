@@ -67,10 +67,10 @@ typedef struct	s_colors {
 		int	topcolor;
 }		t_colors;
 
-typedef struct	s_frame {
+typedef struct	s_vars {
 		void	*mlx;
 		void	*win;
-}		t_frame;
+}		t_vars;
 
 typedef struct	s_bitmap {
 		void	*img;
@@ -114,7 +114,7 @@ typedef struct	s_control {
 }		t_control;
 
 typedef struct	s_metadata {
-		t_frame		frm;
+		t_vars		frm;
 		t_bitmap	bitmap;
 		t_map		map;
 		t_control	ctrl;
