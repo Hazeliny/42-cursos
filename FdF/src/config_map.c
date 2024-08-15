@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 21:46:20 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/14 16:47:28 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/15 16:43:45 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../inc/map.h"
 #include "../lib/libft/libft.h"
 
-void    init_map_color(t_map *map)
+void	init_map_color(t_map *map)
 {
 	map->colors.menucolor = MENU_COLOR;
 	map->colors.groundcolor = GROUND_COLOR;
@@ -70,5 +70,5 @@ char	*read_map(int fd)
 		free(tmp);
 	}
 	free(buffer);
-	return(content);
+	return (content);
 }

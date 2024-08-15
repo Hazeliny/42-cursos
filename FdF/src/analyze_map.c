@@ -6,22 +6,24 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:35:24 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/14 18:00:42 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/15 16:35:19 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/parameters.h"
 #include "../lib/libft/libft.h"
+#include "../inc/map.h"
+#include <math.h>
 
 static void	get_mapsize(t_map *map)
 {
-    int i = -1;
-    int elements = 0;
+	static int	i = -1;
+	static int	elements = 0;
 
-    while (map->memory[++i])
+	while (map->memory[++i])
 	{
 		if (map->memory[i] == '\n' && map->memory[i + 1] == '\0')
-			break;
+			break ;
 		if (ft_isalnum(map->memory[i]) && (map->memory[i + 1] == ' ' || \
 				map->memory[i + 1] == '\n' || map->memory[i + 1] == '\0'))
 			elements++;
@@ -41,42 +43,13 @@ static void	get_mapsize(t_map *map)
 	map->area = map->limits.axis[X] * map->limits.axis[Y];
 }
 
-int	count_points(char *line, t_map *map, int n_line)
-{
-	int			i;
-	static int	index = 0;		
-	char		**split;
-
-	i = 0;
-	split = ft_split(line, ' ');
-	while (split[i] && split[i][0] != '\n')
-	{
-		if(!is_point(&split[i][0]))
-			terminate(ERR_EMPTY);
-		map->points[index].axis[Z] = ft_atoi(&split[i][0]);
-		map->points[index].axis[X] = i - map->limits.axis[X] / 2;
-		map->points[index].axis[Y] = n_line - map->limits.axis[Y] / 2;
-		map->points[index].paint = 1;
-		map->points[index].color = DEFAULT_COLOR;
-		map->points[index].hex_color = has_hexcolors(split[i]);
-		if (map->limits.axis[Z] < map->points[index].axis[Z])
-			map->limits.axis[Z] = map->points[index].axis[Z];
-		if(map->zmin > map->points[index].axis[Z])
-			map->zmin = map->points[index].axis[Z];
-		i++;
-		index++;
-	}
-	free_array(split);
-	return (i);
-}
-
 void	get_points(t_map *map)
 {
-	int		i;
-	char	*tmp;
-	char	*current;
-	int		n_points = 0;
-	int		n_line = 0;
+	int			i;
+	char		*tmp;
+	char		*current;
+	static int	n_points = 0;
+	static int	n_line = 0;
 
 	i = 0;
 	tmp = NULL;
@@ -90,7 +63,7 @@ void	get_points(t_map *map)
 				free(tmp);
 			tmp = ft_substr(current, 0, &map->memory[i] - current);
 			if (map->memory[i] == '\0')
-				break;
+				break ;
 			current = &map->memory[i + 1];
 			n_points += count_points(tmp, map, n_line++);
 		}
@@ -99,10 +72,46 @@ void	get_points(t_map *map)
 		free(tmp);
 }
 
+void	color_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->area)
+	{
+		distribute_colors(&map->points[i], map->colors, map->zmin, \
+			(int)map->limits.axis[Z]);
+		i++;
+	}
+}
+
+void	convert_polar(t_map *map)
+{
+	int		i;
+	float	variance_long;
+	float	variance_lat;
+
+	variance_long = (M_PI * 2) / (map->limits.axis[X] - 1);
+	variance_lat = M_PI / (map->limits.axis[Y]);
+	map->radius = map->limits.axis[X] / (M_PI * 2);
+	i = 0;
+	while (i < map->area)
+	{
+		map->points[i].polar[LONG] = -(map->points[i].axis[X]) * variance_long;
+		if (map->points[i].axis[Y] > 0)
+			map->points[i].polar[LAT] = ((map->points[i].axis[Y]) + \
+			(map->limits.axis[Y] / 2)) * variance_lat - 0.5 * variance_lat;
+		else
+			map->points[i].polar[LAT] = ((map->points[i].axis[Y]) + \
+			(map->limits.axis[Y] / 2) - 1) * variance_lat + 0.5 * variance_lat;
+		i++;
+	}
+}
+
 void	analyze_map(t_map *map)
 {
 	get_mapsize(map);
 	get_points(map);
 	color_map(map);
+	convert_polar(map);
 }
-

@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 15:24:26 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/14 16:46:04 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/15 17:06:51 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,73 +51,80 @@
 
 # define BUFFER_READ 5000
 
-typedef struct	s_point {
-		int		color;
-		int		hex_color;
-		float	axis[3];
-		float	ordinate[2];
-		bool	paint;
+typedef struct s_point
+{
+	int		color;
+	int		hex_color;
+	float	axis[3];
+	float	ordinate[2];
+	bool	paint;
 }		t_point;
 
-typedef struct	s_colors {
-		int	menucolor;
-		int	groundcolor;
-		int	backcolor;
-		int	bottomcolor;
-		int	topcolor;
+typedef struct s_colors
+{
+	int	menucolor;
+	int	groundcolor;
+	int	backcolor;
+	int	bottomcolor;
+	int	topcolor;
 }		t_colors;
 
-typedef struct	s_vars {
-		void	*mlx;
-		void	*win;
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
 }		t_vars;
 
-typedef struct	s_bitmap {
-		void	*img;
-		int		bitpixel;
-		int		linesize;
-		int		endian;
-		char	*buffer;
+typedef struct s_bitmap
+{
+	void	*img;
+	int		bitpixel;
+	int		linesize;
+	int		endian;
+	char	*buffer;
 }		t_bitmap;
 
-typedef struct	s_map {
-		t_point		*points;
-		t_point		limits;
-		t_point		source;
-		t_colors	colors;
-		char		*memory;
-		char		**lines;
-		int			zmin;
-		int			area;
-		int			renders;
-		double		perform;
-		float		angle[3];
-		float		zdivisor;
-		float		scale;
-		float		range;
-		float		proportion;
-		float		radius;
-		bool		f_line;
-		bool		f_dot;
-		bool		f_extraline;
-		bool		f_geo;
-		bool		f_star;
-		bool		f_shadow;
+typedef struct s_map
+{
+	t_point		*points;
+	t_point		limits;
+	t_point		source;
+	t_colors	colors;
+	char		*memory;
+	char		**lines;
+	int			zmin;
+	int			area;
+	int			renders;
+	double		perform;
+	float		angle[3];
+	float		zdivisor;
+	float		scale;
+	float		range;
+	float		proportion;
+	float		radius;
+	bool		f_line;
+	bool		f_dot;
+	bool		f_extraline;
+	bool		f_geo;
+	bool		f_star;
+	bool		f_shadow;
 }		t_map;
 
-typedef struct	s_control {
-		bool	mouse_l;
-		bool	mouse_r;
-		bool	keyctrl;
-		t_point	click_l;
-		t_point	click_r;
+typedef struct s_control
+{
+	bool	mouse_l;
+	bool	mouse_r;
+	bool	keyctrl;
+	t_point	click_l;
+	t_point	click_r;
 }		t_control;
 
-typedef struct	s_metadata {
-		t_vars		frm;
-		t_bitmap	bitmap;
-		t_map		map;
-		t_control	ctrl;
+typedef struct s_metadata
+{
+	t_vars		frm;
+	t_bitmap	bitmap;
+	t_map		map;
+	t_control	ctrl;
 }		t_metadata;
 
 #endif
