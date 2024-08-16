@@ -51,6 +51,13 @@
 
 # define BUFFER_READ 5000
 
+# define CONTROL_BOX			650
+# define DRAWINFO_BOX			40
+# define MAPINFO_BOX			280
+# define COLORSCHEME_BOX		480
+# define LINE_SIZE			30
+# define MENU_TAB			30
+
 typedef struct s_point
 {
 	int		color;

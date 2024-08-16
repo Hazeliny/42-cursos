@@ -79,7 +79,7 @@ int	has_hexcolors(char *point)
 		return (0);
 }
 
-void	gradual_blend(int pos, int step, int below_color, int upper_color)
+int	gradual_blend(int pos, int step, int below_color, int upper_color)
 {
 	int		res[3];
 	int		result_color;
