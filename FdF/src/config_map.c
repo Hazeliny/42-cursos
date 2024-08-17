@@ -23,13 +23,16 @@ void	init_map_color(t_map *map)
 	map->colors.topcolor = TOP_COLOR;
 }
 
-void	init_map(t_map *map)
+void	init_map(t_map *map, int sign)
 {
-	map->area = 0;
-	map->limits.axis[X] = 0;
-	map->limits.axis[Y] = 0;
-	map->limits.axis[Z] = 0;
-	map->zmin = 0;
+	if (sign)
+	{
+		map->area = 0;
+		map->limits.axis[X] = 0;
+		map->limits.axis[Y] = 0;
+		map->limits.axis[Z] = 0;
+		map->zmin = 0;
+	}
 	map->f_line = 1;
 	map->f_dot = 0;
 	map->f_extraline = 0;

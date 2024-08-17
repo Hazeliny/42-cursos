@@ -13,15 +13,17 @@
 #ifndef MAP_H
 # define MAP_H
 
-void	init_map(t_map *map);
+void	init_map(t_map *map, int sign);
 void	init_map_color(t_map *map);
 char	*read_map(int fd);
 void	analyze_map(t_map *map);
+void    color_map(t_map *map);
 int		is_point(char *s);
 int		count_points(char *line, t_map *map, int n_line);
 int		has_hexcolors(char *point);
 void	distribute_colors(t_point *point, t_colors colors, int zmin, int zmax);
 int	gradual_blend(int pos, int step, int below_color, int upper_color);
+int	draw_map_win(t_metadata *meta, int f);
 void    draw_bkg(t_metadata *meta, int backcolor, int menucolor);
 int     get_color(t_metadata *meta, int color);
 void    set_color(char *buffer, int endian, int color, int alpha);
@@ -58,5 +60,16 @@ void    draw_paint_info(t_metadata *meta);
 void    draw_map_info(t_metadata *meta);
 void    draw_color_theme(t_metadata *meta);
 void    display_msg(t_metadata *meta, int key, int size, char *str);
+int     press_key(int key, void *para);
+void    ctrl_angle(int key, t_metadata *meta);
+void    get_angle(float *angle, float diff);
+void    parallelize_view(t_map *map);
+void    isometrize_view(t_map *map);
+void    ctrl_colortheme(int key, t_map *map);
+int     release_key(int key, void *para);
+int     press_mouse(int button, int x, int y, void *para);
+int     release_mouse(int button, int x, int y, void *para);
+int     move_mouse(int x, int y, void *para);
+int     exit_program(void *para);
 
 #endif

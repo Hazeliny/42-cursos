@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		init_fdf(&meta);
-		init_map(map);
+		init_map(map, 1);
 		fd = open(av[1], O_RDONLY);
 		if (fd < 2)
 			terminate(ERR_OPEN);
@@ -52,12 +52,12 @@ int	main(int ac, char **av)
 		analyze_map(map);
 		if (draw_map_win(&meta, FIT) < 0)
 			terminate(ERR_MAP);
-		mlx_hook(meta.frm.win, 2, 0, key_press, &meta);
-		mlx_hook(meta.frm.win, 3, 0, key_release, &meta);
-		mlx_hook(meta.frm.win, 4, 0, mouse_press, &meta);
-		mlx_hook(meta.frm.win, 5, 0, mouse_release, &meta);
-		mlx_hook(meta.frm.win, 6, 0, mouse_move, &meta);
-		mlx_hook(meta.frm.win, 17, 0, terminate_program, &meta);
+		mlx_hook(meta.frm.win, 2, 0, press_key, &meta);
+		mlx_hook(meta.frm.win, 3, 0, release_key, &meta);
+		mlx_hook(meta.frm.win, 4, 0, press_mouse, &meta);
+		mlx_hook(meta.frm.win, 5, 0, release_mouse, &meta);
+		mlx_hook(meta.frm.win, 6, 0, move_mouse, &meta);
+		mlx_hook(meta.frm.win, 17, 0, exit_program, &meta);
 		mlx_loop(meta.frm.mlx);
 		free(meta.map.points);
 		free(meta.map.memory);

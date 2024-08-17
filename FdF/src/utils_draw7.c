@@ -31,3 +31,25 @@ void	put_nbr(t_metadata *meta, int key, int size, int nbr)
 	mlx_string_put(meta->frm.mlx, meta->frm.win, key, size, \
 						NUMBER_COLOR, s);
 }
+
+void	parallelize_view(t_map *map)
+{
+	map->f_geo = 0;
+	map->angle[X] = 90;
+	map->angle[Y] = 0;
+	map->angle[Z] = 0;
+	map->range = 0;
+	map->source.axis[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+	map->source.axis[Y] = WINY / 2;
+}
+
+void	isometrize_view(t_map *map)
+{
+	map->f_geo = 0;
+	map->angle[X] = 30;
+	map->angle[Y] = 330;
+	map->angle[Z] = 30;
+	map->range = 0;
+	map->source.axis[X] = ((WINX - MENU_WIDTH) / 2) + MENU_WIDTH;
+	map->source.axis[Y] = WINY / 2;
+}

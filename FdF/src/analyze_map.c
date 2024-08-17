@@ -43,7 +43,7 @@ static void	get_mapsize(t_map *map)
 	map->area = map->limits.axis[X] * map->limits.axis[Y];
 }
 
-void	get_points(t_map *map)
+static void	get_points(t_map *map)
 {
 	int			i;
 	char		*tmp;
@@ -85,7 +85,7 @@ void	color_map(t_map *map)
 	}
 }
 
-void	convert_polar(t_map *map)
+static void	convert_polar(t_map *map)
 {
 	int		i;
 	float	variance_long;
