@@ -91,9 +91,9 @@ int	gradual_blend(int pos, int step, int below_color, int upper_color)
 							((below_color >> 8) & 0xFF)) / (double) step;
 	augment[2] = (double)((upper_color & 0xFF) - (below_color & 0xFF)) \
 							/ (double) step;
-	res[0] = (below_color >> 16) + ft_round(pos * augment[0]);
-	res[1] = ((below_color >> 8) & 0xFF) + ft_round(pos * augment[1]);
-	res[2] = (below_color & 0xFF) + ft_round(pos * augment[2]);
+	res[0] = (below_color >> 16) + get_round(pos * augment[0]);
+	res[1] = ((below_color >> 8) & 0xFF) + get_round(pos * augment[1]);
+	res[2] = (below_color & 0xFF) + get_round(pos * augment[2]);
 	result_color = (res[0] << 16) + (res[1] << 8) + res[2];
 	return (result_color);
 }

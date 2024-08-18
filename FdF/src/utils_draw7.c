@@ -17,6 +17,16 @@
 #include "../lib/libft/libft.h"
 #include <math.h>
 
+int	get_round(double n)
+{
+	int	res;
+
+	res = (int)n;
+	if (n - res >= .5)
+		res++;
+	return (res);
+}
+
 void	display_msg(t_metadata *meta, int key, int size, char *str)
 {
 	mlx_string_put(meta->frm.mlx, meta->frm.win, key, size, \

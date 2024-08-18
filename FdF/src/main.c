@@ -34,7 +34,6 @@ static void	init_fdf(t_metadata *meta)
 }
 
 int	main(int ac, char **av)
-//int	main(void)
 {
 	int			fd;
 	t_metadata	meta;
@@ -42,7 +41,6 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		init_fdf(&meta);
 		init_map(map, 1);
 		fd = open(av[1], O_RDONLY);
 		if (fd < 2)
@@ -50,6 +48,7 @@ int	main(int ac, char **av)
 		map->memory = read_map(fd);
 		close(fd);
 		analyze_map(map);
+		init_fdf(&meta);
 		if (draw_map_win(&meta, FIT) < 0)
 			terminate(ERR_MAP);
 		mlx_hook(meta.frm.win, 2, 0, press_key, &meta);

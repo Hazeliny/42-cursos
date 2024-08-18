@@ -23,6 +23,7 @@ int		count_points(char *line, t_map *map, int n_line);
 int		has_hexcolors(char *point);
 void	distribute_colors(t_point *point, t_colors colors, int zmin, int zmax);
 int	gradual_blend(int pos, int step, int below_color, int upper_color);
+int     get_round(double n);
 int	draw_map_win(t_metadata *meta, int f);
 void    draw_bkg(t_metadata *meta, int backcolor, int menucolor);
 int     get_color(t_metadata *meta, int color);
