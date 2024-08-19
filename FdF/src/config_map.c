@@ -6,12 +6,13 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 21:46:20 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 16:43:45 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:08:42 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/parameters.h"
 #include "../inc/map.h"
+#include "../inc/handle_errors.h"
 #include "../lib/libft/libft.h"
 
 void	init_map_color(t_map *map)

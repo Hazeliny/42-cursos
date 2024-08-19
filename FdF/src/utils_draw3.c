@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:05:12 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/16 13:05:22 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 12:47:46 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	rotate_x(float angle, int area, t_point *ori_p, t_point *res_p)
 {
-	int	i;
+	int		i;
 	float	radian;
 	float	p_matrix[3][3];
 
@@ -39,7 +39,7 @@ void	rotate_x(float angle, int area, t_point *ori_p, t_point *res_p)
 
 void	rotate_y(float angle, int area, t_point *ori_p, t_point *res_p)
 {
-	int	i;
+	int		i;
 	float	radian;
 	float	p_matrix[3][3];
 
@@ -60,7 +60,7 @@ void	rotate_y(float angle, int area, t_point *ori_p, t_point *res_p)
 
 void	rotate_z(float angle, int area, t_point *ori_p, t_point *res_p)
 {
-	int	i;
+	int		i;
 	float	radian;
 	float	p_matrix[3][3];
 
@@ -96,7 +96,7 @@ void	shadow(int area, t_point *p)
 
 void	isome_project(int area, t_point *ori_p, t_point *res_p)
 {
-	int	i;
+	int		i;
 	float	p_matrix[3][3];
 
 	init_matrix(p_matrix);

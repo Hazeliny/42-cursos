@@ -6,13 +6,14 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:27:18 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/17 20:27:22 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:41:35 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/minilibx-linux/mlx.h"
 //#include "../lib/minilibx-macos/mlx.h"
 #include "../inc/parameters.h"
+#include "../inc/keys.h"
 #include "../inc/map.h"
 #include "../lib/libft/libft.h"
 #include <math.h>
@@ -34,17 +35,17 @@ void	ctrl_angle(int key, t_metadata *meta)
 	if (meta->ctrl.keyctrl)
 		angle = 90;
 	if (key == KEY_DOWN)
-		get_angle(&meta.map.angle[X], angle);
+		get_angle(&meta->map.angle[X], angle);
 	if (key == KEY_UP)
-		get_angle(&meta.map.angle[X], -angle);
+		get_angle(&meta->map.angle[X], -angle);
 	if (key == KEY_LEFT)
-		get_angle(&meta.map.angle[Y], angle);
+		get_angle(&meta->map.angle[Y], angle);
 	if (key == KEY_RIGHT)
-		get_angle(&meta.map.angle[Y], -angle);
+		get_angle(&meta->map.angle[Y], -angle);
 	if (key == KEY_Q)
-		get_angle(&meta.map.angle[Z], angle);
+		get_angle(&meta->map.angle[Z], angle);
 	if (key == KEY_W)
-		get_angle(&meta.map.angle[Z], -angle);
+		get_angle(&meta->map.angle[Z], -angle);
 }
 
 void	ctrl_colortheme(int key, t_map *map)

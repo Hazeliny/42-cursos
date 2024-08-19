@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:45:01 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/16 19:45:05 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 12:56:48 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,36 +43,36 @@ int	is_valid_pixel(t_point p)
 	return (1);
 }
 
-int	draw_wire(t_metadata *meta, t_point begin, t_point terminus)
+int	draw_wire(t_metadata *meta, t_point bg, t_point tm)
 {
-	int	length;
-	int	distance;
+	int		len;
+	int		dis;
 	t_point	gap;
 	t_point	pixel;
 
-	if (is_valid_pixel(begin) == 0 && is_valid_pixel(terminus) == 0)
+	if (is_valid_pixel(bg) == 0 && is_valid_pixel(tm) == 0)
 		return (0);
-	gap.axis[X] = terminus.axis[X] - begin.axis[X];
-	gap.axis[Y] = terminus.axis[Y] - begin.axis[Y];
-	distance = sqrt((gap.axis[X] * gap.axis[X]) + \
+	gap.axis[X] = tm.axis[X] - bg.axis[X];
+	gap.axis[Y] = tm.axis[Y] - bg.axis[Y];
+	dis = sqrt((gap.axis[X] * gap.axis[X]) + \
 			(gap.axis[Y] * gap.axis[Y]));
-	length = distance;
-	gap.axis[X] /= distance;
-	gap.axis[Y] /= distance;
-	pixel.axis[X] = begin.axis[X];
-	pixel.axis[Y] = begin.axis[Y];
-	while (distance > 0)
+	len = dis;
+	gap.axis[X] /= dis;
+	gap.axis[Y] /= dis;
+	pixel.axis[X] = bg.axis[X];
+	pixel.axis[Y] = bg.axis[Y];
+	while (dis > 0)
 	{
-		pixel.color = gradual_blend(length - distance, length, begin.color, terminus.color);
+		pixel.color = gradual_blend(len - dis, len, bg.color, tm.color);
 		put_pixel(meta, pixel);
 		pixel.axis[X] += gap.axis[X];
 		pixel.axis[Y] += gap.axis[Y];
-		distance --;
+		dis --;
 	}
 	return (1);
 }
 
-void	draw_wireframe(t_point	*p, t_metadata *meta, int density, int wire)
+void	draw_wireframe(t_point *p, t_metadata *meta, int density, int wire)
 {
 	int	i;
 	int	end_x;

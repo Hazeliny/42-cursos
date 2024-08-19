@@ -6,13 +6,14 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:35:24 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 16:35:19 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 13:56:07 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/parameters.h"
 #include "../lib/libft/libft.h"
 #include "../inc/map.h"
+#include "../inc/handle_errors.h"
 #include <math.h>
 
 static void	get_mapsize(t_map *map)

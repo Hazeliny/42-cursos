@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 12:43:11 by linyao            #+#    #+#             */
-/*   Updated: 2024/06/12 16:39:58 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 18:24:34 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include "ft_printf.h"
 
 typedef struct s_list
 {
@@ -66,5 +68,16 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+int		ft_printf(const char *format, ...);
+int		ft_parse_convert(va_list *ag, char c);
+int		ft_putchar_suf(char c);
+int		ft_putstr_suf(char *s);
+int		ft_putnbr_suf(int n);
+int		ft_putnbr_unsigned_suf(unsigned int n);
+int		ft_length_hex(unsigned int n);
+int		ft_puthex_suf(unsigned int n, char c);
+void	ft_putptr_rec(unsigned long long addr, char *base);
+int		ft_length_ptr(unsigned long long addr);
+int		ft_putptr_suf(void *ptr);
 
 #endif

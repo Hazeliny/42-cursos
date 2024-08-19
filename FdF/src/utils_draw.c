@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 21:45:26 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 21:45:59 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:54:12 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_bkg(t_metadata *meta, int backcolor, int menucolor)
 	}
 }
 
-void	copy_map_projection(t_point * s, int area, t_point *d)
+void	copy_map_projection(t_point *s, int area, t_point *d)
 {
 	int	i;
 
@@ -75,9 +75,9 @@ void	parse_transform_mapdata(t_metadata *meta, t_point *projection)
 
 void	draw_dots(t_point dot, t_metadata *meta, int radius)
 {
-	int	axis[2];
-	int	variation[2];
-	int	radius_deviation;
+	int		axis[2];
+	int		variation[2];
+	int		radius_deviation;
 	t_point	pixel;
 
 	axis[X] = radius;
@@ -91,7 +91,7 @@ void	draw_dots(t_point dot, t_metadata *meta, int radius)
 		draw_circle_edge(meta, pixel, dot, axis[Y]);
 		draw_circle_edge(meta, pixel, dot, axis[X]);
 		axis[Y]++;
-		radius_deviation = += variation[Y];
+		radius_deviation += variation[Y];
 		variation[Y] += 2;
 		if (((radius_deviation << 1) + variation[X]) > 0)
 		{
@@ -104,25 +104,25 @@ void	draw_dots(t_point dot, t_metadata *meta, int radius)
 
 void	make_dots(t_metadata *meta)
 {
-	int	i;
+	int		i;
 	t_point	dot;
-	int	border_x[2];
-	int	border_y[2];
+	int		bd_x[2];
+	int		bd_y[2];
 
 	if (meta->map.f_geo == 0)
 		return ;
-	border_x[0] = meta->map.source.axis[X] - (meta->map.radius * meta->map.scale);
-	border_x[1] = meta->map.source.axis[X] + (meta->map.radius * meta->map.scale);
-	border_y[0] = meta->map.source.axis[Y] - (meta->map.radius * meta->map.scale);
-	border_x[1] = meta->map.source.axis[Y] + (meta->map.radius * meta->map.scale);
+	bd_x[0] = meta->map.source.axis[X] - (meta->map.radius * meta->map.scale);
+	bd_x[1] = meta->map.source.axis[X] + (meta->map.radius * meta->map.scale);
+	bd_y[0] = meta->map.source.axis[Y] - (meta->map.radius * meta->map.scale);
+	bd_y[1] = meta->map.source.axis[Y] + (meta->map.radius * meta->map.scale);
 	i = 0;
 	while (i < 200)
 	{
 		dot.axis[X] = rand() % WINX;
 		dot.axis[Y] = rand() % WINY;
 		dot.color = WHITE;
-		if (dot.axis[X] < border_x[0] || dot.axis[X] > border_x[1] || \
-			dot.axis[Y] < border_y[0] || dot.axis[Y] > border_y[1])
+		if ((dot.axis[X] < bd_x[0] || dot.axis[X] > bd_x[1]) || \
+			(dot.axis[Y] < bd_y[0] || dot.axis[Y] > bd_y[1]))
 			draw_dots(dot, meta, 2);
 		i++;
 	}

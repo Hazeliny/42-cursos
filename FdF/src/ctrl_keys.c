@@ -6,13 +6,14 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:09:49 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/17 20:09:52 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 18:01:21 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/minilibx-linux/mlx.h"
 //#include "../lib/minilibx-macos/mlx.h"
 #include "../inc/parameters.h"
+#include "../inc/keys.h"
 #include "../inc/map.h"
 #include "../lib/libft/libft.h"
 #include <math.h>
@@ -90,6 +91,7 @@ int	press_key(int key, void *para)
 {
 	t_metadata	*meta;
 
+	ft_printf("%d Test\n", key);
 	meta = (t_metadata *)para;
 	ctrl_angle(key, meta);
 	ctrl_key1(key, meta);
@@ -105,7 +107,7 @@ int	release_key(int key, void *para)
 {
 	t_metadata	*meta;
 
-	meta = (t_meta *)para;
+	meta = (t_metadata *)para;
 	if (key == KEY_CMD)
 		meta->ctrl.keyctrl = 0;
 	return (0);

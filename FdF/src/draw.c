@@ -6,18 +6,19 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:20:23 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 17:42:33 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:36:43 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/minilibx-linux/mlx.h"
 //#include "../lib/minilibx-macos/mlx.h"
 #include "../inc/parameters.h"
+#include "../inc/handle_errors.h"
 #include "../inc/map.h"
 #include <time.h>
 #include <math.h>
 
-void	put_pixel(t_metadata *meta, t_point pixel)
+int	put_pixel(t_metadata *meta, t_point pixel)
 {
 	int	alpha;
 	int	pos_pixel;
@@ -48,7 +49,7 @@ void	draw_circle_edge(t_metadata *meta, t_point pixel, \
 		pixel.axis[Y] = (int)dot.axis[Y] + coordinate;
 		put_pixel(meta, pixel);
 		pixel.axis[X] = i;
-		pixel.axis[Y] = (int)dot.aixs[Y] - coordinate;
+		pixel.axis[Y] = (int)dot.axis[Y] - coordinate;
 		put_pixel(meta, pixel);
 		i++;
 	}

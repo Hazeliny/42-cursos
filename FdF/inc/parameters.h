@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 15:24:26 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 17:06:51 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:43:29 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PARAMETERS_H
 
 # include <stdbool.h>
+# include <fcntl.h>
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -27,20 +29,26 @@
 # define LAT 0
 # define LONG 1
 
-# define ROJO		0xc1272d
-# define VERDE		0x33cc55
+# define RED		0xc1272d
+# define GREEN		0x33cc55
 # define FUCSIA		0xff255c
-# define AZUL		0x1B8EFA
-# define SUPERAZUL	0x0000FF
+# define BLUE		0x1B8EFA
+# define DEEPBLUE	0x0000FF
 # define JAFFA		0xEF8633
+# define CARBON		0x151515
+# define WHITE		0xBBBBBB
+# define DISCO		0x9A1F6A
+# define BRICK_RED	0xC2294E
+# define FLEMINGO	0xEC4B27
+# define SAFFRON	0xF3AF3D
 
 # define DEFAULT_COLOR	JAFFA
 # define GROUND_COLOR	SAFFRON
-# define BOTTOM_COLOR	AZUL
+# define BOTTOM_COLOR	BLUE
 # define TOP_COLOR	BRICK_RED
 # define MENU_COLOR     0x202020
 # define BACK_COLOR     0x151515
-# define TEXT_COLOR	0xEAEAEA
+# define TEXT_COLOR		0xEAEAEA
 # define NUMBER_COLOR	0xF3AF3D
 
 # define MENU_WIDTH	350
@@ -55,8 +63,8 @@
 # define DRAWINFO_BOX			40
 # define MAPINFO_BOX			280
 # define COLORSCHEME_BOX		480
-# define LINE_SIZE			30
-# define MENU_TAB			30
+# define LINE_SIZE				30
+# define MENU_TAB				30
 
 typedef struct s_point
 {
@@ -133,5 +141,27 @@ typedef struct s_metadata
 	t_map		map;
 	t_control	ctrl;
 }		t_metadata;
+
+# define DEF_COLOR	"\033[0;39m"
+# define SH_GRAY	"\033[0;90m"
+# define SH_RED		"\033[0;91m"
+# define SH_GREEN	"\033[0;92m"
+# define SH_YELLOW	"\033[0;93m"
+# define SH_BLUE	"\033[0;94m"
+# define SH_MAGENTA	"\033[0;95m"
+# define SH_CYAN	"\033[0;96m"
+# define SH_WHITE	"\033[0;97m"
+# define SH_KNR		"\x1B[0m"
+# define SH_KRED	"\x1B[31m"
+# define SH_KGRN	"\x1B[32m"
+# define SH_KYEL	"\x1B[33m"
+# define SH_KBLU	"\x1B[34m"
+# define SH_KMAG	"\x1B[35m"
+# define SH_KCYN	"\x1B[36m"
+# define SH_KWHT	"\x1B[37m"
+# define U_ORANGE	"\033[48:5:208m"
+# define U_WHITE	"\033[37;7:208m"
+# define U_YELLOW	"\033[33;7:208m"
+# define U_BLUE		"\033[34;7:208m"
 
 #endif

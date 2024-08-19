@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:12:28 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/16 14:12:32 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 12:48:36 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	init_matrix(float matrix[3][3])
 
 t_point	multiply_vector(t_point ori_p, float p_matrix[3][3])
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_point	res;
 
 	res = ori_p;
@@ -67,7 +67,7 @@ void	zoom(int area, int scale, t_point *projection)
 		projection[i].axis[X] *= scale;
 		projection[i].axis[Y] *= scale;
 		projection[i].axis[Z] *= scale;
-		i++; 
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 #    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/12 17:33:07 by linyao            #+#    #+#              #
-#    Updated: 2024/08/13 12:31:20 by linyao           ###   ########.fr        #
+#    Updated: 2024/08/19 12:04:04 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-SRC_FILES	=	main get_next_line get_next_line_utils \
+SRC_FILES	=	main get_next_line get_next_line_utils analyze_map \
+				config_map ctrl_keys ctrl_mouse draw handle_errors \
+				utils_ctrl utils_draw utils_draw2 utils_draw3 \
+				utils_draw4 utils_draw5 utils_draw6 utils_draw7 utils_map
  
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -54,35 +57,35 @@ INCS		= 	$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
 OBJF		=	.cache_exists
 
 all:	makelibs
-		@$(MAKE) $(NAME)
+			@$(MAKE) $(NAME)
 
 makelibs:	
-	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) -C $(MINILIBX_DIR)
+			@$(MAKE) -C $(LIBFT_DIR)
+			@$(MAKE) -C $(MINILIBX_DIR)
 
 -include 	${DEPS}
 $(NAME):	$(OBJ)		
 			@$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)		
-			@echo "👉 $(BLUE)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
+			@echo "$(BLUE)$(CC) $(CFLAGS) $(FSANITIZE) $(OBJ) $(LIBFT) $(MINILIBXCC) $(OPENGL) -o $(NAME)$(DEF_COLOR)"
 			@echo "$(GREEN)✨ FDF compiled!$(DEF_COLOR)"
 
 bonus:		
 			@$(MAKE) all
 			
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCS) | $(OBJF)
-			@echo "🍩 $(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 			$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			
 $(LIBFT):
-	@make -C $(LIBFT_DIR)
-	@echo "$(GREEN)libft compiled!$(DEF_COLOR)"	
+			@make -C $(LIBFT_DIR)
+			@echo "$(GREEN)libft compiled!$(DEF_COLOR)"	
 	
 $(MINILIBX):
-	@make -C $(MINILIBX_DIR)
-	@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"			
+			@make -C $(MINILIBX_DIR)
+			@echo "$(GREEN)Minilibx compiled!$(DEF_COLOR)"			
 
 clean:
 			@make clean -sC $(LIBFT_DIR)

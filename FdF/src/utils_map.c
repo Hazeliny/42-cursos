@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:59:10 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 16:42:21 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 16:12:31 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ void	distribute_colors(t_point *point, t_colors colors, int zmin, int zmax)
 		point->color = gradual_blend(point->axis[Z], zmax, colors.groundcolor, \
 			colors.topcolor);
 	else
-		point->color = gradual_blend(-(min - point->axis[Z]), -zmin, \
+		point->color = gradual_blend(-(zmin - point->axis[Z]), -zmin, \
 			colors.bottomcolor, colors.groundcolor);
 }

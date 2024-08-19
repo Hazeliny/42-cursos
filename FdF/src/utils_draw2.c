@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 22:24:30 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/15 22:24:39 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 12:45:10 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	adjust_depth(t_point *p, float d, int area)
 
 void	flexion(t_point *p, int area, float range)
 {
-	int	i;
+	int		i;
 	float	curvature;
 
 	i = 0;

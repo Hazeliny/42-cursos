@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 21:16:00 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/16 21:16:04 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:59:54 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_control_msg(t_metadata *meta)
 {
 	int	size;
 
-	size = CONTROL_BOX:
+	size = CONTROL_BOX;
 	display_msg(meta, MENU_TAB, size, "### CONTROL MSG ###");
 	size += LINE_SIZE;
 	display_msg(meta, MENU_TAB, size, "Scroll: Zoom In/Out");
@@ -67,9 +67,9 @@ void	draw_paint_info(t_metadata *meta)
 	put_nbr(meta, MENU_TAB + 100, size, meta->map.renders);
 	size += LINE_SIZE;
 	display_msg(meta, MENU_TAB, size, "Performance(ms):");
-	put_nbr(meta, MENU_TAB + 170, size, meta->map.performance * 1000);
+	put_nbr(meta, MENU_TAB + 170, size, meta->map.perform * 1000);
 	size += LINE_SIZE;
-	display_msg(meta, MENU_TAB, size, "X, Y, Z: [   ] [   ] [   ]");
+	display_msg(meta, MENU_TAB, size, "X, Y, Z: ");
 	put_nbr(meta, MENU_TAB + 100, size, meta->map.angle[X]);
 	put_nbr(meta, MENU_TAB + 160, size, meta->map.angle[Y]);
 	put_nbr(meta, MENU_TAB + 220, size, meta->map.angle[Z]);
@@ -104,7 +104,7 @@ void	draw_map_info(t_metadata *meta)
 	put_nbr(meta, MENU_TAB + 80, size, meta->map.limits.axis[Z]);
 	size += LINE_SIZE;
 	display_msg(meta, MENU_TAB, size, "AxisZ Min:");
-	put_nbr(meta, MENU_TAB + 80, size, meta->map.limits.zmin);
+	put_nbr(meta, MENU_TAB + 80, size, meta->map.zmin);
 	size += LINE_SIZE;
 }
 
