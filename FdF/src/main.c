@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:51:33 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/19 18:03:06 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/20 12:21:37 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	control_mlx(t_metadata *meta)
 	mlx_hook(meta->frm.win, 3, 1L << 1, &release_key, meta);
 	mlx_hook(meta->frm.win, 4, 1L << 2, &press_mouse, meta);
 	mlx_hook(meta->frm.win, 5, 1L << 3, &release_mouse, meta);
-	mlx_hook(meta->frm.win, 6, 0, &move_mouse, meta);
+	mlx_hook(meta->frm.win, 6, 1L << 13, &move_mouse, meta);
 	mlx_hook(meta->frm.win, 17, 0, &exit_program, meta);
 }
 
