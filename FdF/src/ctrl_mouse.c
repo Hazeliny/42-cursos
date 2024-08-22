@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 22:05:20 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/17 22:05:29 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/21 18:24:33 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	press_mouse(int button, int x, int y, void *para)
 		meta->ctrl.click_l.axis[X] = x;
 		meta->ctrl.click_l.axis[Y] = y;
 	}
-	if (button == 2)
+	if (button == 3)
 	{
 		meta->ctrl.mouse_r = 1;
 		meta->ctrl.click_r.axis[X] = x;
@@ -53,7 +53,7 @@ int	release_mouse(int button, int x, int y, void *para)
 	(void)y;
 	if (button == 1)
 		meta->ctrl.mouse_l = 0;
-	if (button == 2)
+	if (button == 3)
 		meta->ctrl.mouse_r = 0;
 	return (0);
 }
@@ -73,10 +73,10 @@ int	move_mouse(int x, int y, void *para)
 		meta->ctrl.click_l.axis[Y] = y;
 		draw_map_win(meta, FREE);
 	}
-	if (meta->ctrl.mouse_r)
+	else if(meta->ctrl.mouse_r)
 	{
-		meta->map.source.axis[X] -= ((int)meta->ctrl.click_r.axis[X] - x);
-		meta->map.source.axis[Y] -= ((int)meta->ctrl.click_r.axis[Y] - y);
+		meta->map.source.axis[X] += (x - (int)meta->ctrl.click_r.axis[X]);
+		meta->map.source.axis[Y] += (y - (int)meta->ctrl.click_r.axis[Y]);
 		meta->map.source.axis[Z] = 0;
 		meta->ctrl.click_r.axis[X] = x;
 		meta->ctrl.click_r.axis[Y] = y;
