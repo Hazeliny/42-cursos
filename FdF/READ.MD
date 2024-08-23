@@ -1,10 +1,17 @@
 KEY CONTROL
+
 KEY UP / KEY DOWN / KEY LEFT / KEY RIGHT: Change angle, rotate axes X/Y
+
 + / SHIFT +: Scale the Z-axis proportionally
+
 ESC: Exit program
+
 R: Recover
+
 L: Switch of line
+
 D: Swith of dots
+
 X: Switch of extra lines
 G: Switch of geospatial view
 H: Switch of shadow in geospatial mode
