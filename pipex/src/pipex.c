@@ -6,13 +6,13 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:30:17 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/25 11:30:21 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:45:47 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-static void	exe_cmd(char **cmd, char **env)
+static void	exe_cmd(char *cmd, char **env)
 {
 	char	**array_cmd;
 	char	*path_env;
@@ -62,7 +62,7 @@ static void	process_father(int *p_end, char **av, char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	int	p_end[2];
+	int		p_end[2];
 	pid_t	np;
 
 	if (ac != 5)

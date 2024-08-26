@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:37:48 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/25 11:37:51 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:46:26 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_array(char **arr)
 
 char	*extract_path(char *cmd, char **env)
 {
-	int	i;
+	int		i;
 	char	*path;
 	char	**allpaths;
 	char	*fullpath;
@@ -51,7 +51,7 @@ char	*extract_path(char *cmd, char **env)
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
 		i++;
-	allpaths = ft_split(env[i] + 5, ":");
+	allpaths = ft_split(env[i] + 5, ':');
 	i = 0;
 	while (allpaths[i])
 	{

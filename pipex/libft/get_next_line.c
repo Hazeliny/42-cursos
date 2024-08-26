@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:09:34 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/08 18:40:32 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 13:28:57 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_extract_line(char **storage)
 	if ((*storage)[i] == '\n')
 	{
 		line = ft_strndup(*storage, i + 1);
-		temp = ft_strdup(*storage + i + 1);
+		temp = ft_strdup1(*storage + i + 1);
 		ft_free(storage);
 		*storage = temp;
 		if (**storage == '\0')
@@ -42,7 +42,7 @@ char	*ft_extract_line(char **storage)
 	}
 	else
 	{
-		line = ft_strdup(*storage);
+		line = ft_strdup1(*storage);
 		ft_free(storage);
 	}
 	return (line);
@@ -65,12 +65,12 @@ int	ft_read_file(int fd, char **storage)
 	buffer[bytes_read] = '\0';
 	if (*storage)
 	{
-		temp = ft_strjoin(*storage, buffer);
+		temp = ft_strjoin1(*storage, buffer);
 		ft_free(storage);
 		*storage = temp;
 	}
 	else
-		*storage = ft_strdup(buffer);
+		*storage = ft_strdup1(buffer);
 	return (bytes_read);
 }
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(storage, '\n'))
+	while (bytes_read > 0 && !ft_strchr1(storage, '\n'))
 		bytes_read = ft_read_file(fd, &storage);
 	if ((bytes_read == 0 && (!storage || *storage == '\0'))
 		|| (bytes_read < 0))

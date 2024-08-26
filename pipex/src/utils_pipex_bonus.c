@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:37:08 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/25 16:37:14 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:49:23 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_exit(void)
 	exit(0);
 }
 
-void    handle_error(void)
+void	handle_error(void)
 {
 	perror("Error");
 	exit(-1);
@@ -41,7 +41,7 @@ int	open_file(char *file, int flag)
 	return (fd);
 }
 
-void    free_array(char **arr)
+void	free_array(char **arr)
 {
 	int	i;
 
@@ -57,9 +57,9 @@ void    free_array(char **arr)
 	free(arr);
 }
 
-char    *extract_path(char *cmd, char **env)
+char	*extract_path(char *cmd, char **env)
 {
-	int	i;
+	int		i;
 	char	*path;
 	char	**allpaths;
 	char	*fullpath;
@@ -67,7 +67,7 @@ char    *extract_path(char *cmd, char **env)
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
 		i++;
-	allpaths = ft_split(env[i] + 5, ":");
+	allpaths = ft_split(env[i] + 5, ':');
 	i = 0;
 	while (allpaths[i])
 	{

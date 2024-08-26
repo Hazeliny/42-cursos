@@ -6,7 +6,7 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 16:35:59 by linyao            #+#    #+#             */
-/*   Updated: 2024/08/25 16:36:04 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 17:47:34 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	exe_cmd(char *cmd, char **env)
 {
-	char    **array_cmd;
-	char    *path_env;
+	char	**array_cmd;
+	char	*path_env;
 
 	array_cmd = ft_split(cmd, ' ');
 	path_env = extract_path(array_cmd[0], env);
@@ -54,7 +54,7 @@ static void	put_in_pipe(char **av, int *p_end)
 
 static void	here_doc(char **av)
 {
-	int	p_end[2];
+	int		p_end[2];
 	pid_t	np;
 
 	if (pipe(p_end) == -1)
@@ -74,7 +74,7 @@ static void	here_doc(char **av)
 
 static void	run_pipe(char *cmd, char **env)
 {
-	int	p_end;
+	int		p_end[2];
 	pid_t	np;
 
 	if (pipe(p_end) == -1)

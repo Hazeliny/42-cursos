@@ -6,14 +6,14 @@
 #    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 17:48:46 by linyao            #+#    #+#              #
-#    Updated: 2024/06/16 15:46:52 by linyao           ###   ########.fr        #
+#    Updated: 2024/08/26 14:33:54 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HBONUS = .bonus
 
-INCLUDE = libft.h ft_printf.h get_next_line.h get_next_line_bonus.h
+INCLUDE = -I.
 
 SRC = ft_atoi.c  ft_memchr.c ft_split.c ft_strncmp.c \
       ft_bzero.c ft_memcmp.c ft_strchr.c ft_strnstr.c \
@@ -37,7 +37,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror $(INCLUDE)
 
 all: $(NAME)
 
@@ -62,4 +62,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

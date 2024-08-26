@@ -6,13 +6,13 @@
 /*   By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:32:04 by linyao            #+#    #+#             */
-/*   Updated: 2024/07/06 17:32:05 by linyao           ###   ########.fr       */
+/*   Updated: 2024/08/26 13:33:03 by linyao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlenx(char *str)
 {
 	size_t	len;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strchr(char *str, char c)
+char	*ft_strchrx(char *str, char c)
 {
 	if (!str)
 		return (NULL);
@@ -33,7 +33,7 @@ char	*ft_strchr(char *str, char c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoinx(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -43,8 +43,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = ft_strlenx(s1);
+	len2 = ft_strlenx(s2);
 	result = (char *)malloc((len1 + len2 + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
@@ -58,18 +58,18 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (result);
 }
 
-char	*ft_strdup(char *s)
+char	*ft_strdupx(char *s)
 {
 	char	*d;
 	size_t	i;
 
 	if (!s)
 		return (NULL);
-	d = (char *)malloc(ft_strlen(s) + 1);
+	d = (char *)malloc(ft_strlenx(s) + 1);
 	if (!d)
 		return (NULL);
 	i = 0;
-	while (i < ft_strlen(s) && s[i] != '\0')
+	while (i < ft_strlenx(s) && s[i] != '\0')
 	{
 		d[i] = s[i];
 		i++;
@@ -86,10 +86,10 @@ char	*ft_strndup(char *s, size_t n)
 
 	if (s == NULL)
 		return (NULL);
-	if (n < ft_strlen(s))
+	if (n < ft_strlenx(s))
 		len = n;
 	else
-		len = ft_strlen(s);
+		len = ft_strlenx(s);
 	d = (char *)malloc((len + 1) * sizeof(char));
 	if (!d)
 		return (NULL);
