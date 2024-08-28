@@ -1,0 +1,37 @@
+Makefile:
+
+make all: compile and link all the files including all the bonus files.
+make bonus: compile and link all the files including all the bonus files, 
+			NOT ONLY bonus files, same as 'make all'.
+
+touch ft_atoi.c (basic) ->
+make: only recompile the file ft_atoi.c, then ar rc into the updated library.
+		No problem of relink.
+
+touch get_next_line_bonus.c (bonus) ->
+make: only recompile the file get_next_line_bonus.c, then ar rc into the updated 
+		library, same as "touch ft_atoi.c (basic)".
+
+touch libft.h(ft_printf.h / get_next_line.h / get_next_line_bonus.h)
+make: recompile all the source files including bonus files. (make all is the default
+		whether 'make' or 'make all' is used.)
+
+
+Makefile1:
+
+make all: only compile and link all the basic files. NOT including all the bonus 
+			files.
+make bonus: only compile and link all the bonus files, different from 'make all'.
+
+touch ft_atoi.c (basic) ->
+make: only recompile the file ft_atoi.c, then ar rc into the updated library.
+        No problem of relink.
+
+After 'make bonus', then 'touch get_next_line_bonus.c (bonus)' ->
+make: recompile nothing, because make all is the default when make is used.
+
+touch libft.h(ft_printf.h / get_next_line.h / get_next_line_bonus.h) ->
+make: only recompile all the basic source files, NOT including bonus files.
+
+After 'make bonus', then 'touch get_next_line_bonus.c (bonus)' ->
+make bonus: only recompile get_next_line_bonus.c (bonus). No problem of relink.
