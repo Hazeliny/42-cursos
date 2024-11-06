@@ -83,3 +83,23 @@ el proceso padre redirige el descriptor de archivo de file2 a la salida estánda
 
 Ejecución completada.
 
+
+cat | cat | cat
+
+pid_t	pid1 = fork(); //proccess of son1
+dup2(pipe1[1], STDOUT_FILENO);
+close(pipe1[0]);
+close(pipe1[1]);
+-----------------
+pid_t   pid2 = fork(); //proccess of son2
+dup2(pipe1[0], STDIN_FILENO); //last pipe 
+dup2(pipe2[1], STDOUT_FILENO); // current pipe
+close(pipe1[0]);
+close(pipe1[1]);
+close(pipe2[0]);
+close(pipe2[1]);
+-----------------
+pid_t   pid3 = fork(); //proccess of son3
+dup2(pipe2[0], STDIN_FILENO);
+close(pipe2[0]);
+close(pipe2[1]);
