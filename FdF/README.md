@@ -79,7 +79,7 @@ FdF is short for “fil de fer” in French, which means “wireframe model”, 
 
 	4: White / Black
 
-     MOUSE CONTROL
+   MOUSE CONTROL
 
 	LEFT MOUSE BUTTON: Rotate map
 
