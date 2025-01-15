@@ -24,13 +24,13 @@ FdF is short for “fil de fer” in French, which means “wireframe model”, 
    ```
 
 
-![09]()
-![19]()
-![23]()
-![16]()
-![25]()
-![20]()
-![30]()
+![09](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/09.png)
+![19](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/19.png)
+![23](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/23.png)
+![16](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/16.png)
+![25](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/25.png)
+![20](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/20.png)
+![30](https://github.com/Hazeliny/42-cursos/blob/main/FdF/assets/30.png)
 
 
 4. **Control**:
@@ -79,8 +79,7 @@ FdF is short for “fil de fer” in French, which means “wireframe model”, 
 
 	4: White / Black
 
-
-MOUSE CONTROL
+     MOUSE CONTROL
 
 	LEFT MOUSE BUTTON: Rotate map
 
