@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linyao <linyao@student.42barcelona.co      +#+  +:+       +#+         #
+#    By: linyao <linyao@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 17:48:46 by linyao            #+#    #+#              #
-#    Updated: 2024/07/30 16:58:37 by linyao           ###   ########.fr        #
+#    Updated: 2025/03/23 20:03:24 by linyao           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HBONUS = .bonus
 
-INCLUDE = libft.h
+INCLUDE = libft.h get_next_line.h
 
 SRC = ft_atoi.c  ft_memchr.c ft_split.c ft_strncmp.c \
       ft_bzero.c ft_memcmp.c ft_strchr.c ft_strnstr.c \
@@ -23,7 +23,8 @@ SRC = ft_atoi.c  ft_memchr.c ft_split.c ft_strncmp.c \
       ft_isascii.c ft_putchar_fd.c ft_strlcat.c ft_tolower.c \
       ft_isdigit.c ft_putendl_fd.c ft_strlcpy.c ft_toupper.c \
       ft_isprint.c ft_putnbr_fd.c ft_strlen.c \
-      ft_itoa.c ft_putstr_fd.c ft_strmapi.c
+      ft_itoa.c ft_putstr_fd.c ft_strmapi.c \
+	get_next_line.c get_next_line_utils.c
 
 BONUS_FILES = ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
               ft_lstnew.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c \
